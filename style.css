@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Grey+Qo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sankofa+Display&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#conteiner-pai {
+    width: 1250px;
+    height: 600px;
+   /* border: 1px solid red;*/
+    background-color: #E5E5E5;
+    margin-top: 2%;
+    margin-left: 5%;
+  
+}
+
+.imagem-a {
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 120px;
+    height: 48px;
+    margin-bottom: 30px;
+}
+
+.conteiner-imagem-texto{
+    display: flex;
+    justify-content: flex-end;   
+}
+
+.teste{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+}
+
+.msg-nao-encontrada{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    width: 248px;
+}
+
+.msg-texto-criptografar {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    width: 248px;
+}
+#texto-incriptar{
+    font-size: 20px;
+    border-color: #E5E5E5;
+    background-color: #E5E5E5;
+}
