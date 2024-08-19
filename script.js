@@ -85,9 +85,11 @@ const inserirDadosEncriptados = () => {
 
   if (
     /[\u00C0-\u00FF]/.test(incriptarTexto()) ||
-    /[A-Z]/.test(incriptarTexto())
+    /[A-Z]/.test(incriptarTexto()) 
   ) {
     avisoMinusculas.style.color = "red";
+  }else if(inputTextarea.value == ''){
+    inputTextarea.placeholder = 'Digite um texto sem acento e letra maiúscula para começar :)';
   } else {
     removeElementos();
     campoTextoIncriptografado.appendChild(textoEmbaralhado);
