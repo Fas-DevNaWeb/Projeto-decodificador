@@ -45,7 +45,8 @@ let fraseTexto2 = document.querySelector(".msg-texto-criptografar");
 let campoTextoIncriptografado = document.querySelector(".teste");
 let avisoMinusculas = document.querySelector(".aviso-minusculas");
 let limparTexto = document.querySelector('.limpar-area-texto');
-console.log(limparTexto);
+let btnDescripttografar = document.querySelector('.btn-descripttografar');
+console.log(btnDescripttografar);
 
 const chavesDeCriptografia = {
   e: "enter",
@@ -78,12 +79,33 @@ const incriptarTexto = () => {
   return u;
 };
 
+const desencriptarTexto = (textoEncriptado) => {
+  let texto = textoEncriptado;
+  let enter = "",
+    imes = "",
+    ai = "",
+    ober = "",
+    ufat = "";
+
+  for (let i = 0; i <= texto.length; i++) {
+    enter = texto.replace(/enter/g, `${chavesDeCriptografia.enter}`);
+    imes = enter.replace(/imes/g, `${chavesDeCriptografia.imes}`);
+    ai = imes.replace(/ai/g, `${chavesDeCriptografia.ai}`);
+    ober = ai.replace(/ober/g, `${chavesDeCriptografia.ober}`);
+    ufat = ober.replace(/ufat/g, `${chavesDeCriptografia.ufat}`);
+  }
+  return ufat;
+};
+
+
+
 const removeElementos = () => {
   imagemPesquisa.src = "";
   imagemPesquisa.alt = "";
   fraseTexto1.remove();
   fraseTexto2.remove();
 };
+
 const inserirDadosEncriptados = () => {
   const textoEmbaralhado = document.createElement("p");
   textoEmbaralhado.classList.add("texto-embaralhado");
@@ -119,6 +141,19 @@ const inserirDadosEncriptados = () => {
 btnCriptografar.addEventListener("click", () => {
   inserirDadosEncriptados();
 });
+/* COMEÇAR AQUI !!!!!
+btnDescripttografar.addEventListener('click', () => {
+  if(inputTextarea.value === ''){
+    inputTextarea.placeholder = 'Digite um texto encriptografado para podermos fazer a tradução (:0';
+    
+  }
+  const frase = inputTextarea.value;
+  console.log(frase)
+  if(!frase.includes('enter')){
+    inputTextarea.placeholder = 'É necessário digitar um texto emcriptografado (:0';
+  }
+})
+*/
 
 limparTexto.addEventListener('click', () => {
    inputTextarea.value = '';
