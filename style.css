@@ -93,3 +93,9 @@ button{
     margin-left: 20px;
     margin-top: 30px;
 }
+
+.botao-copiar {
+    position: absolute;
+    margin-top: 455px;
+    margin-left: 74px;
+}
