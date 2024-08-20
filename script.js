@@ -44,8 +44,8 @@ let fraseTexto1 = document.querySelector(".msg-nao-encontrada");
 let fraseTexto2 = document.querySelector(".msg-texto-criptografar");
 let campoTextoIncriptografado = document.querySelector(".teste");
 let avisoMinusculas = document.querySelector(".aviso-minusculas");
-let limparTexto = document.querySelector('.limpar-area-texto');
-let btnDescripttografar = document.querySelector('.btn-descripttografar');
+let limparTexto = document.querySelector(".limpar-area-texto");
+let btnDescripttografar = document.querySelector(".btn-descripttografar");
 console.log(btnDescripttografar);
 
 const chavesDeCriptografia = {
@@ -54,11 +54,11 @@ const chavesDeCriptografia = {
   a: "ai",
   o: "ober",
   u: "ufat",
-  enter:'e',
-  imes:'i',
-  ai:'a',
-  ober:'o',
-  ufat:'u'
+  enter: "e",
+  imes: "i",
+  ai: "a",
+  ober: "o",
+  ufat: "u",
 };
 
 const incriptarTexto = () => {
@@ -97,8 +97,6 @@ const desencriptarTexto = (textoEncriptado) => {
   return ufat;
 };
 
-
-
 const removeElementos = () => {
   imagemPesquisa.src = "";
   imagemPesquisa.alt = "";
@@ -110,55 +108,70 @@ const inserirDadosEncriptados = () => {
   const textoEmbaralhado = document.createElement("p");
   textoEmbaralhado.classList.add("texto-embaralhado");
   textoEmbaralhado.innerText = incriptarTexto();
-  
-  if (/[\u00C0-\u00FF]/.test(incriptarTexto()) || /[A-Z]/.test(incriptarTexto())) {
+
+  if (
+    /[\u00C0-\u00FF]/.test(incriptarTexto()) ||
+    /[A-Z]/.test(incriptarTexto())
+  ) {
     avisoMinusculas.style.color = "red";
-    if(avisoMinusculas.style.color === 'red'){
-      const txtEmbaralhado = document.querySelector('.texto-embaralhado');
+    if (avisoMinusculas.style.color === "red") {
+      const txtEmbaralhado = document.querySelector(".texto-embaralhado");
       txtEmbaralhado.remove();
       imagemPesquisa.src = "img/High quality products 1 1.svg";
       campoTextoIncriptografado.appendChild(fraseTexto1);
       campoTextoIncriptografado.appendChild(fraseTexto2);
-      const btnCopiar = document.querySelector('.botao-copiar');
+      const btnCopiar = document.querySelector(".botao-copiar");
       btnCopiar.remove();
-
     }
-  }else if(inputTextarea.value == ''){
-    inputTextarea.placeholder = 'Digite um texto sem acento e letra maiúscula para começar :)';
+  } else if (inputTextarea.value == "") {
+    inputTextarea.placeholder =
+      "Digite um texto sem acento e sem letra maiúscula para começar :)";
   } else {
     removeElementos();
     campoTextoIncriptografado.appendChild(textoEmbaralhado);
-    avisoMinusculas.style.color = "black";    
+    avisoMinusculas.style.color = "black";
 
-    const botaoCopiar = document.createElement('button');
-    botaoCopiar.innerText = 'Copiar';
-    botaoCopiar.classList.add('botao-copiar');
+    const botaoCopiar = document.createElement("button");
+    botaoCopiar.innerText = "Copiar";
+    botaoCopiar.classList.add("botao-copiar");
     campoTextoIncriptografado.appendChild(botaoCopiar);
   }
-  
 };
 
 btnCriptografar.addEventListener("click", () => {
   inserirDadosEncriptados();
 });
-/* COMEÇAR AQUI !!!!!
-btnDescripttografar.addEventListener('click', () => {
-  if(inputTextarea.value === ''){
-    inputTextarea.placeholder = 'Digite um texto encriptografado para podermos fazer a tradução (:0';
-    
+
+btnDescripttografar.addEventListener("click", () => {
+  if (inputTextarea.value === "") {
+    inputTextarea.placeholder =
+      "Digite um texto encriptografado para podermos fazer a tradução (:0";
   }
   const frase = inputTextarea.value;
-  console.log(frase)
+
+  const fraseDesencriptada = desencriptarTexto(frase);
+
+  const fraseDesencriptada2 = document.createElement("p");
+  fraseDesencriptada2.className = "texto-embaralhado";
+  fraseDesencriptada2.innerText = fraseDesencriptada;
+  campoTextoIncriptografado.appendChild(fraseDesencriptada2);
+  removeElementos();
+  const botaoCopiar = document.createElement("button");
+  botaoCopiar.innerText = "Copiar";
+  botaoCopiar.classList.add("botao-copiar");
+  campoTextoIncriptografado.appendChild(botaoCopiar);
+  console.log(frase);
+
+  /*
   if(!frase.includes('enter')){
     inputTextarea.placeholder = 'É necessário digitar um texto emcriptografado (:0';
-  }
-})
-*/
+  }*/
+  console.log(fraseDesencriptada);
+});
 
-limparTexto.addEventListener('click', () => {
-   inputTextarea.value = '';
-   avisoMinusculas.style.color = "black";   
-   inputTextarea.placeholder = 'Digite seu texto aqui !';
-   /*inputTextarea.focus();*/
-})
+limparTexto.addEventListener("click", () => {
+  inputTextarea.value = "";
+  avisoMinusculas.style.color = "black";
+  inputTextarea.placeholder = "Digite seu texto aqui !";
+});
 console.log(incriptarTexto());
