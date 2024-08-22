@@ -118,31 +118,12 @@ btnCriptografar.addEventListener("click", () => {
   inserirDadosEncriptados();
 });
 
-btnDescripttografar.addEventListener("click", () => {
+btnDescripttografar.addEventListener('click', () => {
   if (inputTextarea.value === "") {
-    inputTextarea.placeholder =
-      "Digite um texto encriptografado para podermos fazer a tradução (:0";
+    inputTextarea.placeholder = "Digite um texto encriptografado para podermos fazer a tradução (:0";
   }else{
-    const textoEmbaralhado1 = document.querySelector(".texto-embaralhado");
-    if (textoEmbaralhado1) {
-      textoEmbaralhado1.remove();
-    }
-    const frase = inputTextarea.value;
-    const fraseDesencriptada = desencriptarTexto(frase);
-
-    const fraseDesencriptada2 = document.createElement("p");
-    fraseDesencriptada2.className = "texto-embaralhado";
-    fraseDesencriptada2.innerText = fraseDesencriptada;
-    campoTextoIncriptografado.appendChild(fraseDesencriptada2);
-    removeElementos();
-
-    const botaoCopiar = document.createElement("button");
-    botaoCopiar.innerText = "Copiar";
-    botaoCopiar.classList.add("botao-copiar");
-    campoTextoIncriptografado.appendChild(botaoCopiar);
-  }
-
-  if( !(inputTextarea.value.includes('ai')) ){
+  fraseRecebida = inputTextarea.value;
+  if( !fraseRecebida.includes('ai') || !fraseRecebida.includes('enter') || !fraseRecebida.includes('imes') || !fraseRecebida.includes('ober') || !fraseRecebida.includes('ufat') ){
     inputTextarea.value ='';
     inputTextarea.placeholder = 'Digite um texto emcriptografado ):';
 
@@ -153,10 +134,44 @@ btnDescripttografar.addEventListener("click", () => {
     const textoEmbaralhado3 = document.querySelector(".texto-embaralhado");
     textoEmbaralhado3.remove();
     
-    
-  }const btnCopiar = document.querySelector('.botao-copiar');
-    btnCopiar.remove();
-});
+    const btnCopiar = document.querySelector('.botao-copiar');
+    btnCopiar.remove(); 
+   }
+   if(fraseRecebida.includes('ai') || fraseRecebida.includes('enter') || fraseRecebida.includes('imes') || fraseRecebida.includes('ober') || fraseRecebida.includes('ufat') ){
+
+   const fraseDesencriptada = desencriptarTexto(fraseRecebida);
+
+   const fraseDesencriptada2 = document.createElement("p");
+   fraseDesencriptada2.className = "texto-embaralhado";
+   fraseDesencriptada2.innerText = fraseDesencriptada;
+   campoTextoIncriptografado.appendChild(fraseDesencriptada2);
+   removeElementos();
+
+   const botaoCopiar = document.createElement("button");
+   botaoCopiar.innerText = "Copiar";
+   botaoCopiar.classList.add("botao-copiar");
+   campoTextoIncriptografado.appendChild(botaoCopiar);
+
+
+  }}});/*
+  else{
+
+  c
+  
+}
+);
+  
+  */
+  /*
+    const textoEmbaralhado1 = document.querySelector(".texto-embaralhado");
+    if (textoEmbaralhado1) {
+      textoEmbaralhado1.remove();
+    }*/
+
+  
+
+ 
+
 /*
 limparTexto.addEventListener('click', () => {
   inputTextarea.value = '';
