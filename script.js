@@ -105,17 +105,27 @@ const inserirDadosEncriptados = () => {
     removeElementos();
 
     campoTextoIncriptografado.appendChild(textoEmbaralhado);
-    avisoMinusculas.style.color = "black";
+    avisoMinusculas.style.color = "green";
 
     const botaoCopiar = document.createElement("button");
     botaoCopiar.innerText = "Copiar";
     botaoCopiar.classList.add("botao-copiar");
     campoTextoIncriptografado.appendChild(botaoCopiar);
-  }
+   }
 };
 
 btnCriptografar.addEventListener("click", () => {
   inserirDadosEncriptados();
+  /*
+  const btn = document.querySelector('.botao-copiar');
+  btn.remove();
+
+  const v = document.querySelector('.teste');
+const teste2 = document.querySelector('.botao-copiar');
+
+
+  teste2.style.display = 'block';
+  */
 });
 
 btnDescripttografar.addEventListener('click', () => {
@@ -137,6 +147,7 @@ btnDescripttografar.addEventListener('click', () => {
     const btnCopiar = document.querySelector('.botao-copiar');
     btnCopiar.remove(); 
    }
+
    if(fraseRecebida.includes('ai') || fraseRecebida.includes('enter') || fraseRecebida.includes('imes') || fraseRecebida.includes('ober') || fraseRecebida.includes('ufat') ){
 
    const fraseDesencriptada = desencriptarTexto(fraseRecebida);
@@ -151,40 +162,23 @@ btnDescripttografar.addEventListener('click', () => {
    botaoCopiar.innerText = "Copiar";
    botaoCopiar.classList.add("botao-copiar");
    campoTextoIncriptografado.appendChild(botaoCopiar);
-
-
-  }}});/*
-  else{
-
-  c
+    }
+  }
   
-}
-);
-  
-  */
-  /*
-    const textoEmbaralhado1 = document.querySelector(".texto-embaralhado");
-    if (textoEmbaralhado1) {
-      textoEmbaralhado1.remove();
-    }*/
-
-  
-
- 
-
+}); 
+//// maior bosta....
 /*
-limparTexto.addEventListener('click', () => {
-  inputTextarea.value = '';
-  inputTextarea.placeholder = 'Digite seu texto aqui !!'
-  const verificador = document.querySelector(".texto-embaralhado");
-  if (verificador) {
-    verificador.remove();
-  
-    imagemPesquisa.src = "img/High quality products 1 1.svg";
-    campoTextoIncriptografado.appendChild(fraseTexto1);
-    campoTextoIncriptografado.appendChild(fraseTexto2);
+const btCopia = document.querySelector('.botao-copiar');
+btCopia.addEventListener('click', clipboardCopy);
 
-    const teste =document.querySelector('.botao-copiar');
-    teste.remove();
-    console.log(teste);
-}})*/
+async function clipboardCopy() {
+let text = document.querySelector(".texto-embaralhado").innerText;
+await navigator.clipboard.writeText(text);
+}
+
+
+
+console.log(btCopia);
+ */
+
+

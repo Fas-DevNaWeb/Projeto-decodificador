@@ -71,7 +71,7 @@ margin-left: 73px  ;
     font-size: 18px;
     margin-bottom: 10px;
 }
-button{
+button {
     width: 200px;
     height: 45px;
     margin-right: 25px;
@@ -98,4 +98,5 @@ button{
     position: absolute;
     margin-top: 455px;
     margin-left: 74px;
+    display: none;
 }
