@@ -7,7 +7,9 @@ let campoTextoIncriptografado = document.querySelector(".teste");
 let avisoMinusculas = document.querySelector(".aviso-minusculas");
 let limparTexto = document.querySelector(".limpar-area-texto");
 let btnDescripttografar = document.querySelector(".btn-descripttografar");
-
+let btnlimpar = document.querySelector('.btn-limpar');
+console.log(btnlimpar);
+//let botaoCopiar = '';
 const chavesDeCriptografia = {
   e: "enter",
   i: "imes",
@@ -104,9 +106,21 @@ const inserirDadosEncriptados = () => {
  }
 }
 
+btnlimpar.addEventListener('click',() => {
+  inputTextarea.value = '';
+  inputTextarea.placeholder = 'Nenhum texto para apagar!';
+});
 
 btnCriptografar.addEventListener("click", () => {
   inserirDadosEncriptados();
+
+  botaoCopiar = document.querySelector('.botao-copiar');
+  botaoCopiar.addEventListener('click', clipboardCopy);
+
+  async function clipboardCopy() {
+  let text = document.querySelector(".texto-embaralhado").innerText;
+  await navigator.clipboard.writeText(text);
+}
 });
 
 btnDescripttografar.addEventListener('click', () => {
@@ -150,16 +164,4 @@ btnDescripttografar.addEventListener('click', () => {
   
 }); 
 
-
-// arrumar aqui ....
-if(btCopia === null){
-  console.log('teste ...');
-}
-const btCopia = document.querySelector('.botao-copiar');
-btCopia.addEventListener('click', clipboardCopy);
-
-async function clipboardCopy() {
-let text = document.querySelector(".texto-embaralhado").innerText;
-await navigator.clipboard.writeText(text);
-}
-   
+  
