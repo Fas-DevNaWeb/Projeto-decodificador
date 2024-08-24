@@ -168,7 +168,7 @@ btnDescripttografar.addEventListener('click', () => {
   
 }); 
 //// maior bosta....
-/*
+
 const btCopia = document.querySelector('.botao-copiar');
 btCopia.addEventListener('click', clipboardCopy);
 
@@ -180,6 +180,6 @@ await navigator.clipboard.writeText(text);
 
 
 console.log(btCopia);
- */
+
 
 

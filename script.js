@@ -71,28 +71,95 @@ campoTextoIncriptografado.appendChild(botaoCopiar);
 }
 
 const inserirDadosEncriptados = () => { 
+
   if(inputTextarea.value === ''){
-    inputTextarea.placeholder =
-      "Digite um texto sem acento e sem letra maiúscula para começar :)";
+    inputTextarea.placeholder ="Digite um texto sem acento e sem letra maiúscula para começar :)";
+  }else{
+
+   if(/[\u00C0-\u00FF]/.test(incriptarTexto()) || /[A-Z]/.test(incriptarTexto())) {
+    avisoMinusculas.style.color = "red";
+  }else{
+  const textoEmbaralhado = document.createElement("p");
+  textoEmbaralhado.classList.add("texto-embaralhado");
+  textoEmbaralhado.innerText = incriptarTexto();
+  campoTextoIncriptografado.appendChild(textoEmbaralhado);
+  removeElementos();
+  buttonCopiar();
+  avisoMinusculas.style.color = 'green';
   }
 
-  if(inputTextarea.value !== ''){    
-     const textoEmbaralhado = document.createElement("p");
-     textoEmbaralhado.classList.add("texto-embaralhado");
-    textoEmbaralhado.innerText = incriptarTexto();  
-    campoTextoIncriptografado.appendChild(textoEmbaralhado);
+  if (avisoMinusculas.style.color === "red") {
+    const txtEmbaralhado = document.querySelector(".texto-embaralhado");
+    txtEmbaralhado.remove();
 
-    removeElementos();
-    buttonCopiar();
-    avisoMinusculas.style.color = "green";
+    imagemPesquisa.src = "img/High quality products 1 1.svg";
+    campoTextoIncriptografado.appendChild(imagemPesquisa);
+    campoTextoIncriptografado.appendChild(fraseTexto1);
+    campoTextoIncriptografado.appendChild(fraseTexto2);
+
+    const btnCopiar = document.querySelector(".botao-copiar");
+    btnCopiar.remove();
+  }
+
  }
+}
 
- 
+
 btnCriptografar.addEventListener("click", () => {
   inserirDadosEncriptados();
 });
 
+btnDescripttografar.addEventListener('click', () => {
+
+  if (inputTextarea.value === "") {
+    inputTextarea.placeholder = "Digite um texto encriptografado para podermos fazer a tradução (:0";
+  }else{
+   const fraseRecebida = inputTextarea.value;
+  if( !fraseRecebida.includes('ai') || !fraseRecebida.includes('enter') || !fraseRecebida.includes('imes') || !fraseRecebida.includes('ober') || !fraseRecebida.includes('ufat') ){
+    inputTextarea.value ='';
+    inputTextarea.placeholder = 'Digite um texto emcriptografado ):';
+
+    imagemPesquisa.src = "img/High quality products 1 1.svg";
+    campoTextoIncriptografado.appendChild(imagemPesquisa);
+    campoTextoIncriptografado.appendChild(fraseTexto1);
+    campoTextoIncriptografado.appendChild(fraseTexto2);
+
+    const textoEmbaralhado3 = document.querySelector(".texto-embaralhado");
+    textoEmbaralhado3.remove();
+    
+    const btnCopiar = document.querySelector('.botao-copiar');
+    btnCopiar.remove(); 
+   }
+
+   if(fraseRecebida.includes('ai') || fraseRecebida.includes('enter') || fraseRecebida.includes('imes') || fraseRecebida.includes('ober') || fraseRecebida.includes('ufat') ){
+
+   const fraseDesencriptada = desencriptarTexto(fraseRecebida);
+
+   const fraseDesencriptada2 = document.createElement("p");
+   fraseDesencriptada2.className = "texto-embaralhado";
+   fraseDesencriptada2.innerText = fraseDesencriptada;
+   campoTextoIncriptografado.appendChild(fraseDesencriptada2);
+   removeElementos();
+   buttonCopiar();
+   const botaoCopiar = document.createElement("button");
+   botaoCopiar.innerText = "Copiar";
+   botaoCopiar.classList.add("botao-copiar");
+   campoTextoIncriptografado.appendChild(botaoCopiar);
+    }
+  }
+  
+}); 
 
 
+// arrumar aqui ....
+if(btCopia === null){
+  console.log('teste ...');
+}
+const btCopia = document.querySelector('.botao-copiar');
+btCopia.addEventListener('click', clipboardCopy);
 
+async function clipboardCopy() {
+let text = document.querySelector(".texto-embaralhado").innerText;
+await navigator.clipboard.writeText(text);
+}
    
