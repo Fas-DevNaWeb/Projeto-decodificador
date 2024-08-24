@@ -1,4 +1,4 @@
-let inputTextarea = document.getElementById("texto-incriptar");
+let inputTextarea = document.querySelector(".texto-incriptar");
 let btnCriptografar = document.querySelector(".botao-criptogrfar");
 let imagemPesquisa = document.querySelector(".img-pesquisa");
 let fraseTexto1 = document.querySelector(".msg-nao-encontrada");
@@ -107,8 +107,13 @@ const inserirDadosEncriptados = () => {
 }
 
 btnlimpar.addEventListener('click',() => {
-  inputTextarea.value = '';
-  inputTextarea.placeholder = 'Nenhum texto para apagar!';
+  if(inputTextarea.value === ''){
+    inputTextarea.placeholder = 'Nenhum texto para apagar!';
+  }else{
+    inputTextarea.value = '';
+    inputTextarea.focus();
+  }
+
 });
 
 btnCriptografar.addEventListener("click", () => {
@@ -126,12 +131,14 @@ btnCriptografar.addEventListener("click", () => {
 btnDescripttografar.addEventListener('click', () => {
 
   if (inputTextarea.value === "") {
-    inputTextarea.placeholder = "Digite um texto encriptografado para podermos fazer a tradução (:0";
-  }else{
-   const fraseRecebida = inputTextarea.value;
+    inputTextarea.placeholder = 'Digite um texto encriptografado para podermos fazer a tradução (:0';
+    
+  } else{
+   let fraseRecebida = inputTextarea.value;
   if( !fraseRecebida.includes('ai') || !fraseRecebida.includes('enter') || !fraseRecebida.includes('imes') || !fraseRecebida.includes('ober') || !fraseRecebida.includes('ufat') ){
     inputTextarea.value ='';
     inputTextarea.placeholder = 'Digite um texto emcriptografado ):';
+    avisoMinusculas.style.color = 'red';
 
     imagemPesquisa.src = "img/High quality products 1 1.svg";
     campoTextoIncriptografado.appendChild(imagemPesquisa);
