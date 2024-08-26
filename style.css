@@ -120,3 +120,12 @@ textarea:focus {
   margin-top: 455px;
   margin-left: 74px;
 }
+.linkedim{
+  width: 45px;
+  height: 35px;
+}
+.github{
+  width: 100px;
+  height: 36px;
+  margin-top: 15px;
+}
