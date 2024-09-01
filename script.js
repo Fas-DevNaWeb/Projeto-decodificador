@@ -125,6 +125,7 @@ btnlimpar.addEventListener("click", () => {
 });
 
 btnCriptografar.addEventListener("click", () => {
+  inserirDadosEncriptados.innerHTML = '';
   inserirDadosEncriptados();
 });
 
